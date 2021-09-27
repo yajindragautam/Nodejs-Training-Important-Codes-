@@ -26,8 +26,31 @@ getHelloPermise(true)
   })
   .finally(() => console.log("Request Completed"));
 
+  // IMPORTANT - Promise.all() and Promise.race()
+let promise1 = () => new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+    resolve('Promise 1');
+  },2000)
+});
+
+let promise2 = () => new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+    resolve('Promise 2');
+  },2000)
+});
+
+
+Promise.all([promise1(),promise2()]).then((result)=>{
+  console.log('Promise all: ', result);
+})
+.catch((err)=>{
+  console.log('Error : ', err);
+});
+
 
   // THings to remember
 /*  !true =  false;
   !false = true;
   !undefined = true;  */
+  
+
