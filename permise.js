@@ -45,12 +45,12 @@ Promise.all([promise1(),promise2()]).then((result)=>{
 })
 .catch((err)=>{
   console.log('Error : ', err);
-});
+}); 
 
 
   // THings to remember
 /*  !true =  false;
   !false = true;
-  !undefined = true;  */
-  
+  !undefined = true;   */
+
 
