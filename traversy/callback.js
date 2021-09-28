@@ -21,6 +21,6 @@ function createPost(post,callback) {
     posts.push(post);
     callback();
   }),2000;
-}
+}   
 
 createPost({title:'Post Three', body:'This is post three'}, getPost);
