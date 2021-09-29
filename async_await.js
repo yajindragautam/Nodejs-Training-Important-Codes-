@@ -1,28 +1,49 @@
-const userDetail = [{
-    id:101,
-    name:'Yaji'
-},
-{
-    id:102,
-    name:'Eliza'
-}]
-const getUserById = (id) =>{
-    // FIND USER BY FILTER
-   const newUserArray = userDetail.filter((user,index)=>{
-        console.log(userDetail);
+const users = [
+    {
+      id: 1,
+      name: "John",
+    },
+    {
+      id: 2,
+      name: "Sara",
+    },
+    {
+      id: 3,
+      name: "Bob",
+    },
+  ];
+  
+  const getUserById = (id) => {
+    return new Promise((resolve, reject) => {
+      const result = users.find((user, index) => {
         return user.id === id;
-    })  
-
-    //FIND USER BY FOR OF 
- /*   let findUser = null;
-    for(const user of userDetail){
-        if(user.id === id){
-            findUser = user;
-        }
-        console.log(findUser);
-    } */
-
-
-    
-}
-getUserById(1);
+      });
+      resolve(result);
+    });
+  };
+  
+  const updateName = (user, name) => {
+    return new Promise((resolve, reject) => {
+      if (!user) {
+        reject("User cannot be empty");
+      }
+      user.name = name;
+      resolve(user);
+    });
+  };
+  
+  getUserById(1)
+    .then((user) => {
+      console.log("original user value: ", user);
+      return updateName(user, "Hari");
+    })
+    .then((user) => {
+      console.log("new updated result: ", user);
+    })
+    .catch((err) => console.log("Error:", err));
+  
+  const updateUser = async (id, name) => {
+      const user = await getUserById(id);
+      console.log(user);
+  }
+  updateUser(1, "Hari");
